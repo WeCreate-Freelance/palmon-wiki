@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Best Way To Increase Power Fast - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .fast-track-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ffffff !important;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 8px solid #f1c40f; /* High priority yellow */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .fast-track-header h1 {
+            color: #ffffff !important;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .fast-track-header p {
+            color: #bdc3c7 !important;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .priority-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .priority-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 1.2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .priority-item:hover {
+            transform: translateX(10px);
+            border-color: var(--accent);
+        }
+
+        .priority-rank {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: monospace;
+            flex-shrink: 0;
+        }
+
+        .priority-content h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .priority-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .gain-badge {
+            margin-left: auto;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .gain-high { background: #fff3e0; color: #e65100; }
+        .gain-massive { background: #fbe9e7; color: #bf360c; }
+
+        .strategy-box {
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .strategy-title {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .formula-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .formula-card span {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .formula-card strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .formula-card p {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="fast-track-header">
+        <h1>🧠 Growth Optimization Manual</h1>
+        <p>Strategic path to maximum power efficiency and rapid scaling.</p>
+    </div>
+
+    <h2>🚀 Priority Objectives</h2>
+    <div class="priority-container">
+        <div class="priority-item">
+            <div class="priority-rank">01</div>
+            <div class="priority-content">
+                <h3>Palmon Upgrades</h3>
+                <p>Leveling, Star Evolution, and Skill Mastery.</p>
+            </div>
+            <span class="gain-badge gain-massive">Massive Gain</span>
+        </div>
+
+        <div class="priority-item">
+            <div class="priority-rank">02</div>
+            <div class="priority-content">
+                <h3>Gear Refinement</h3>
+                <p>Equipping and enhancing high-rarity sets.</p>
+            </div>
+            <span class="gain-badge gain-massive">Massive Gain</span>
+        </div>
+
+        <div class="priority-item">
+            <div class="priority-rank">03</div>
+            <div class="priority-content">
+                <h3>Tech Research</h3>
+                <p>Economic and Military multipliers in the Lab.</p>
+            </div>
+            <span class="gain-badge gain-high">High Efficiency</span>
+        </div>
+
+        <div class="priority-item">
+            <div class="priority-rank">04</div>
+            <div class="priority-content">
+                <h3>Armigo Progression</h3>
+                <p>Supporting your squad with leveled companions.</p>
+            </div>
+            <span class="gain-badge">Stable Gain</span>
+        </div>
+
+        <div class="priority-item">
+            <div class="priority-rank">05</div>
+            <div class="priority-content">
+                <h3>Building Construction</h3>
+                <p>Unlocking level caps and new system features.</p>
+            </div>
+            <span class="gain-badge">Utility Gain</span>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">
+            <span>🧩</span> Strategic Mental Model
+        </div>
+        <div class="strategy-content">
+            <div class="formula-card">
+                <span>🧱</span>
+                <strong>Foundation</strong>
+                <p>Buildings + Tech</p>
+            </div>
+            <div class="formula-card">
+                <span>⚔️</span>
+                <strong>Direct Lethality</strong>
+                <p>Palmon + Gear</p>
+            </div>
+            <div class="formula-card">
+                <span>⚡</span>
+                <strong>Multipliers</strong>
+                <p>Armigo + Guild + VIP</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="power-profile" style="margin-top: 3rem;">
+        <h3>💡 Pro-Tip for Fast Climbing</h3>
+        <p>Don't just chase the highest number. A lower power squad with <strong>Element Counters</strong> will often beat a higher power squad with poor synergy. Power is the engine, but Strategy is the driver!</p>
+    </div>
+</main>
+{% endblock %}

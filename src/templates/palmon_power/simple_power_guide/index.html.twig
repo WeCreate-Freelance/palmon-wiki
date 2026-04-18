@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Simple Power Guide - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .manual-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ffffff !important;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 8px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .manual-header h1 {
+            color: #ffffff !important;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .manual-header p {
+            color: #bdc3c7 !important;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .field-section {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field-section h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .role-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .role-card strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .priority-badge-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .priority-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .step-num {
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .think-callout {
+            background: #ebf5fb;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* FIXED SPACING & COLORS FOR FINAL RULE BOX */
+        .final-rule-box {
+            background: linear-gradient(135deg, #2c3e50, #1a252f) !important;
+            color: #ffffff !important;
+            border: 2px solid #3498db;
+            padding: 2.5rem 2rem; /* Added generous padding */
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .final-rule-box h2 {
+            color: #3498db !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .final-rule-box .main-rule {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 1rem;
+            color: #ffffff !important;
+        }
+
+        .final-rule-box .sub-rule {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            color: #bdc3c7 !important;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .quest-card[style*="not-allowed"] {
+            opacity: 0.8 !important;
+        }
+
+        .quest-card[style*="not-allowed"] h2, 
+        .quest-card[style*="not-allowed"] p {
+            color: #7f8c8d !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="manual-header">
+        <h1>📖 Simple Power Guide</h1>
+        <p>Efficiency is the key to dominance. Focus your resources, sharpen your squad.</p>
+    </div>
+
+    <section class="field-section">
+        <h2>⚔️ 1. Squad Optimization</h2>
+        <p>Do not spread resources thin. Identify 1–2 <strong>Long-Term Carries</strong> (High rarity/Best traits) and invest heavily in them first.</p>
+        
+        <div class="role-grid">
+            <div class="role-card"><strong>🛡️ The Tank</strong><p>High Def/HP. Usually Earth units.</p></div>
+            <div class="role-card"><strong>⚔️ Main DPS</strong><p>Heavy hitter. Counter elements.</p></div>
+            <div class="role-card"><strong>💥 Second DPS</strong><p>AoE or burst damage cleanup.</p></div>
+            <div class="role-card"><strong>✨ Support</strong><p>Healers/buffers for endurance.</p></div>
+        </div>
+
+        <div class="think-callout">
+            👉 <strong>Tactical Note:</strong> Element counters and synergy multipliers will often defeat a squad with 20% more raw power.
+        </div>
+    </section>
+
+    <section class="field-section">
+        <h2>🔝 2. Strategic Investment</h2>
+        <p>Follow the "Core-First" doctrine to ensure you aren't wasting materials on bench units.</p>
+        
+        <div class="priority-badge-list">
+            <div class="priority-step"><span class="step-num">1</span><span><strong>Max Level:</strong> Sync main squad to Base HQ level immediately.</span></div>
+            <div class="priority-step"><span class="step-num">2</span><span><strong>Star Rank:</strong> Unlock passive skills and massive stat jumps.</span></div>
+            <div class="priority-step"><span class="step-num">3</span><span><strong>Gear:</strong> High-tier gear provides more power than levels.</span></div>
+        </div>
+    </section>
+
+    <section class="field-section">
+        <h2>📈 3. Macro Progression</h2>
+        <p>Total power is a sum of your military and your infrastructure.</p>
+        <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2; margin-bottom: 0;">
+            <li>💪 <strong>Squad Stars/Levels</strong></li>
+            <li>🛡️ <strong>High-tier Equipment</strong></li>
+            <li>🏕️ <strong>Base/Camp Level</strong></li>
+            <li>🔬 <strong>Research Multipliers</strong></li>
+            <li>🌊 <strong>Element Synergy</strong></li>
+            <li>🤝 <strong>Guild Tech Buffs</strong></li>
+        </ul>
+    </section>
+
+    <div class="final-rule-box">
+        <h2>🏆 THE FINAL RULE</h2>
+        <span class="main-rule">Strong Core First. Depth Later.</span>
+        <p class="sub-rule">
+            Stay active in your guild, push HQ levels to raise caps, and always check element counters. That is the path to the leaderboard.
+        </p>
+    </div>
+</main>
+{% endblock %}

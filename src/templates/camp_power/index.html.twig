@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Camp Power - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .hub-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .category-header {
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .category-header h1 {
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2rem;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .module-link {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .module-link:hover {
+            border-color: var(--accent);
+            background: #fcfcfc;
+            transform: translateX(10px);
+            box-shadow: -5px 5px 0px var(--accent);
+        }
+
+        .module-icon {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            background: #f0f0f0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .module-content h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .module-content p {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .module-arrow {
+            margin-left: auto;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        /* Tactical decorative element */
+        .scanline {
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 10px, transparent 10px, transparent 20px);
+            margin-bottom: 2rem;
+            opacity: 0.3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main class="hub-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="category-header">
+        <span>🏰</span>
+        <h1>Camp Power</h1>
+    </div>
+
+    <div class="scanline"></div>
+
+    <p class="lead-text">Strategic intelligence regarding base construction, efficiency, and rapid power scaling.</p>
+
+    <div class="module-grid">
+        <a href="{{ path('app_camp_upgrade_requirements') }}" class="module-link">
+            <div class="module-icon">🧱</div>
+            <div class="module-content">
+                <h3>Upgrade Requirements</h3>
+                <p>Blueprint costs, resource milestones, and HQ prerequisites.</p>
+            </div>
+            <div class="module-arrow">ENTER ➔</div>
+        </a>
+
+        <a href="{{ path('app_overall_camp_power') }}" class="module-link">
+            <div class="module-icon">🔢</div>
+            <div class="module-content">
+                <h3>How Total Power Works</h3>
+                <p>A mathematical breakdown of the 11 core power categories.</p>
+            </div>
+            <div class="module-arrow">ENTER ➔</div>
+        </a>
+
+        <a href="{{ path('app_best_way_to_increase_power_fast') }}" class="module-link">
+            <div class="module-icon">⚡</div>
+            <div class="module-content">
+                <h3>Power Leveling Guide</h3>
+                <p>Optimized paths for fast growth and avoiding resource bottlenecks.</p>
+            </div>
+            <div class="module-arrow">ENTER ➔</div>
+        </a>
+    </div>
+
+    <div class="power-profile" style="margin-top: 3rem;">
+        <h2>🛠️ Backend Log</h2>
+        <p>This directory is currently being populated with real-time game data. Check back for detailed resource tables.</p>
+    </div>
+</main>
+{% endblock %}

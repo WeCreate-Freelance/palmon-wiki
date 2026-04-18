@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Palmon Power - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .palmon-hub-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #ffffff !important;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 8px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '🐾';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+
+        .hero-banner h1 {
+            color: #ffffff !important;
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-banner p {
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .module-section {
+            margin-top: 2rem;
+        }
+
+        .module-section h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #7f8c8d;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-card {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            margin-bottom: 1rem;
+        }
+
+        .guide-card:hover {
+            border-color: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            background: #fdf2f2;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            border: 2px solid #f9dcdc;
+        }
+
+        .card-info h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .card-info p {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .status-badge {
+            margin-left: auto;
+            background: #e74c3c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .intel-box {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 3rem;
+        }
+
+        .intel-box h4 {
+            margin-top: 0;
+            color: #c0392b;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main class="palmon-hub-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="hero-banner">
+        <h1>🐾 Palmon Intelligence</h1>
+        <p>Analyzing combat data, growth paths, and squad optimization.</p>
+    </div>
+
+    <div class="module-section">
+        <h2>Available Tactical Guides</h2>
+        
+        <a href="{{ path('app_simple_power_guide') }}" class="guide-card">
+            <div class="card-icon">📖</div>
+            <div class="card-info">
+                <h3>Simple Power Guide</h3>
+                <p>Essential strategies for building your first core squad and managing resources.</p>
+            </div>
+            <div class="status-badge">Essential</div>
+        </a>
+
+        {# Future Link Placeholder #}
+        <div class="guide-card" style="opacity: 0.6; cursor: not-allowed; border-style: dashed;">
+            <div class="card-icon">🧬</div>
+            <div class="card-info">
+                <h3>Element & Trait Database</h3>
+                <p>Detailed breakdown of elemental counters and passive trait synergy.</p>
+            </div>
+            <div class="status-badge" style="background: #95a5a6;">Locked</div>
+        </div>
+    </div>
+
+    <div class="intel-box">
+        <h4>🚨 Combat Intel Update</h4>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #555;">
+            "Remember: Palmon Power accounts for over <strong>70%</strong> of your total combat effectiveness. 
+            Keep your main carries at max level relative to your HQ to ensure mission success."
+        </p>
+    </div>
+</main>
+{% endblock %}

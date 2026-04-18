@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Camp Upgrade Requirements - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .blueprint-container {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 1rem;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+        }
+
+        .upgrade-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 900px;
+        }
+
+        .upgrade-table thead th {
+            background-color: var(--primary);
+            color: white;
+            padding: 14px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .upgrade-table tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .upgrade-table tbody tr:hover {
+            background-color: #f1f7ff;
+        }
+
+        .upgrade-table td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        .lvl-col {
+            font-weight: bold;
+            color: var(--accent);
+            background: #fdfdfd;
+            text-align: center !important;
+            width: 60px;
+            border-right: 2px solid #eee;
+        }
+
+        .req-tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #495057;
+            border: 1px solid #dee2e6;
+            margin: 2px 0;
+            white-space: nowrap;
+        }
+
+        .res-val { font-weight: 600; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .gold { color: #d4af37; }
+        .lumber { color: #8b4513; }
+        .steel { color: #5d6d7e; }
+        .time { color: #2ecc71; }
+        .tbu { color: #bbb; font-style: italic; font-size: 0.8rem; }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .legend span { font-weight: bold; font-size: 0.9rem; }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="category-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 1rem;">
+        <span style="font-size: 2.5rem;">🏗️</span>
+        <h1 style="margin: 0;">HQ Upgrade Requirements</h1>
+    </div>
+
+    <div class="legend">
+        <span><i class="res-val gold">💰 Gold</i></span>
+        <span><i class="res-val lumber">🪵 Lumber</i></span>
+        <span><i class="res-val steel">⚙️ Steel</i></span>
+        <span><i class="res-val time">⏱️ Time</i></span>
+    </div>
+
+    <div class="blueprint-container">
+        <div class="table-responsive">
+            <table class="upgrade-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">LVL</th>
+                        <th>Req. 1</th>
+                        <th>Req. 2</th>
+                        <th>💰 Gold</th>
+                        <th>🪵 Lumber</th>
+                        <th>⚙️ Steel</th>
+                        <th>⏱️ Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Data Rows #}
+                    <tr><td class="lvl-col">2</td><td>---</td><td>---</td><td class="tbu">Free</td><td class="res-val lumber">8.8k</td><td class="tbu">--</td><td class="res-val time">3s</td></tr>
+                    <tr><td class="lvl-col">3</td><td><span class="req-tag">Lv1 Table Saw</span></td><td><span class="req-tag">Lv1 Furnace</span></td><td class="tbu">--</td><td class="res-val lumber">500</td><td class="res-val steel">500</td><td class="res-val time">1m</td></tr>
+                    <tr><td class="lvl-col">4</td><td><span class="req-tag">Lv3 Shop</span></td><td>---</td><td class="tbu">--</td><td class="res-val lumber">2k</td><td class="res-val steel">2k</td><td class="res-val time">10m</td></tr>
+                    <tr><td class="lvl-col">5</td><td><span class="req-tag">Lv4 Shop</span></td><td>---</td><td class="tbu">--</td><td class="res-val lumber">5k</td><td class="res-val steel">5k</td><td class="res-val time">30m</td></tr>
+                    <tr><td class="lvl-col">6</td><td>---</td><td>---</td><td class="tbu">--</td><td class="res-val lumber">20k</td><td class="res-val steel">20k</td><td class="res-val time">48m</td></tr>
+                    <tr><td class="lvl-col">7</td><td><span class="req-tag">Lv6 Armigo Hut 1</span></td><td><span class="req-tag">Lv6 Shop</span></td><td class="tbu">--</td><td class="res-val lumber">50k</td><td class="res-val steel">50k</td><td class="res-val time">1h 30m</td></tr>
+                    <tr><td class="lvl-col">8</td><td><span class="req-tag">Lv7 Hospital 1</span></td><td><span class="req-tag">Lv7 Table Saw</span></td><td class="tbu">--</td><td class="res-val lumber">150k</td><td class="res-val steel">150k</td><td class="res-val time">3h 36m</td></tr>
+                    <tr><td class="lvl-col">9</td><td><span class="req-tag">Lv8 Water Totem</span></td><td><span class="req-tag">Lv8 Shop</span></td><td class="tbu">--</td><td class="res-val lumber">500k</td><td class="res-val steel">500k</td><td class="res-val time">5h</td></tr>
+                    <tr><td class="lvl-col">10</td><td><span class="req-tag">Lv9 Squad 1</span></td><td><span class="req-tag">Lv9 Armigo Hut 1</span></td><td class="res-val gold">200k</td><td class="res-val lumber">1M</td><td class="res-val steel">1M</td><td class="res-val time">6h 40m</td></tr>
+                    <tr><td class="lvl-col">11</td><td><span class="req-tag">Lv10 Field Lab 1</span></td><td><span class="req-tag">Lv10 Power Plant</span></td><td class="res-val gold">500k</td><td class="res-val lumber">2M</td><td class="res-val steel">2M</td><td class="res-val time">8h 20m</td></tr>
+                    <tr><td class="lvl-col">12</td><td><span class="req-tag">Lv11 Hospital 1</span></td><td><span class="req-tag">Lv11 Hatchery</span></td><td class="res-val gold">1.6M</td><td class="res-val lumber">3.2M</td><td class="res-val steel">3.2M</td><td class="tbu">TBU</td></tr>
+                    <tr><td class="lvl-col">13</td><td><span class="req-tag">Lv12 Armigo Hut 1</span></td><td><span class="req-tag">Lv12 Table Saw</span></td><td class="res-val gold">4M</td><td class="res-val lumber">5M</td><td class="res-val steel">5M</td><td class="tbu">TBU</td></tr>
+                    <tr><td class="lvl-col">14</td><td><span class="req-tag">Lv13 Hospital 1</span></td><td><span class="req-tag">Lv13 Furnace</span></td><td class="res-val gold">8.8M</td><td class="res-val lumber">7.7M</td><td class="res-val steel">7.7M</td><td class="tbu">TBU</td></tr>
+                    <tr><td class="lvl-col">15</td><td><span class="req-tag">Lv14 Power Plant</span></td><td><span class="req-tag">Lv14 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">10.1M</td><td class="res-val steel">10.1M</td><td class="res-val time">22.8h</td></tr>
+                    <tr><td class="lvl-col">16</td><td><span class="req-tag">Lv15 Armigo Hut</span></td><td><span class="req-tag">Lv15 Storehouse</span></td><td class="tbu">TBU</td><td class="res-val lumber">13.9M</td><td class="res-val steel">13.9M</td><td class="res-val time">31.9h</td></tr>
+                    <tr><td class="lvl-col">17</td><td><span class="req-tag">Lv16 Squad 1</span></td><td><span class="req-tag">Lv16 Power Plant</span></td><td class="tbu">TBU</td><td class="res-val lumber">21.8M</td><td class="res-val steel">21.8M</td><td class="res-val time">44.4h</td></tr>
+                    <tr><td class="lvl-col">18</td><td><span class="req-tag">Lv17 Hatchery</span></td><td><span class="req-tag">Lv17 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">32M</td><td class="res-val steel">32M</td><td class="res-val time">62.5h</td></tr>
+                    <tr><td class="lvl-col">19</td><td><span class="req-tag">Lv18 Armigo Hut</span></td><td><span class="req-tag">Lv18 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">53.1M</td><td class="res-val steel">53.1M</td><td class="res-val time">88.9h</td></tr>
+                    <tr><td class="lvl-col">20</td><td><span class="req-tag">Lv19 Hospital 1</span></td><td><span class="req-tag">Lv19 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">60.9M</td><td class="res-val steel">60.9M</td><td class="res-val time">125h</td></tr>
+                    <tr><td class="lvl-col">21</td><td><span class="req-tag">Lv20 Squad 1</span></td><td><span class="req-tag">Lv20 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">104M</td><td class="res-val steel">104M</td><td class="res-val time">175h</td></tr>
+                    <tr><td class="lvl-col">22</td><td><span class="req-tag">Lv21 Armigo Hut</span></td><td><span class="req-tag">Lv21 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">144.7M</td><td class="res-val steel">144.7M</td><td class="res-val time">245h</td></tr>
+                    <tr><td class="lvl-col">23</td><td><span class="req-tag">Lv22 Hospital 1</span></td><td><span class="req-tag">Lv22 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">201.3M</td><td class="res-val steel">201.3M</td><td class="res-val time">343h</td></tr>
+                    <tr><td class="lvl-col">24</td><td><span class="req-tag">Lv23 Squad 1</span></td><td><span class="req-tag">Lv23 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">280.1M</td><td class="res-val steel">280.1M</td><td class="res-val time">480.2h</td></tr>
+                    <tr><td class="lvl-col">25</td><td><span class="req-tag">Lv24 Armigo Hut</span></td><td><span class="req-tag">Lv24 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">381M</td><td class="res-val steel">381M</td><td class="res-val time">555.6h</td></tr>
+                    <tr><td class="lvl-col">26</td><td><span class="req-tag">Lv25 Hospital 1</span></td><td><span class="req-tag">Lv25 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">525M</td><td class="res-val steel">525M</td><td class="res-val time">791.7h</td></tr>
+                    <tr><td class="lvl-col">27</td><td><span class="req-tag">Lv26 Squad 1</span></td><td><span class="req-tag">Lv26 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">605M</td><td class="res-val steel">605M</td><td class="res-val time">972.2h</td></tr>
+                    <tr><td class="lvl-col">28</td><td><span class="req-tag">Lv27 Armigo Hut</span></td><td><span class="req-tag">Lv27 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">745M</td><td class="res-val steel">745M</td><td class="res-val time">1444.4h</td></tr>
+                    <tr><td class="lvl-col">29</td><td><span class="req-tag">Lv28 Hospital 1</span></td><td><span class="req-tag">Lv28 Field Lab 1</span></td><td class="tbu">TBU</td><td class="res-val lumber">986M</td><td class="res-val steel">986M</td><td class="res-val time">1880.3h</td></tr>
+                    <tr><td class="lvl-col">30</td><td><span class="req-tag">Lv29 Squad 1</span></td><td><span class="req-tag">Lv29 Field Lab 1</span></td><td class="res-val gold">1500M</td><td class="res-val lumber">1300M</td><td class="res-val steel">1300M</td><td class="res-val time">2444.4h</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="power-profile" style="margin-top: 2rem;">
+        <h3>💡 Survivor Tip</h3>
+        <p>Resource costs jump significantly after <strong>Level 20</strong>. Ensure your production buildings (Farm, Mine) are maxed out before pushing the HQ to Level 21.</p>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-header h1 {
+            border: none;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .mission-statement {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .terminal-box {
+            background: #1a202c;
+            color: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .terminal-content p {
+            color: #a0aec0 !important;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .terminal-content .cmd { color: var(--accent); }
+        .terminal-content .val { color: #f6e05e; }
+
+        .wecreate-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .wecreate-section h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #edf2f7;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main class="about-container">
+    <section class="about-header">
+        <h1>The Survival Project</h1>
+        <p>Information is the most valuable resource in the frontier.</p>
+    </section>
+
+    <div class="mission-statement">
+        "This wiki is dedicated to providing the most accurate, high-performance data for players of Palmon Survival. We bridge the gap between complex game mechanics and survivor victory."
+    </div>
+
+    <div class="terminal-box">
+        <div class="terminal-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="terminal-content">
+            <p><span class="cmd">admin@wecreate:~$</span> fetch --project info</p>
+            <p>> <span class="val">Project Name:</span> Palmon Survival Wiki</p>
+            <p>> <span class="val">Purpose:</span> Tactical Database & Community Guide</p>
+            <p>> <span class="val">Status:</span> Operational / Under Continuous Development</p>
+            <p>> <span class="val">Location:</span> Bulacan, Philippines</p>
+            <p><span class="cmd">admin@wecreate:~$</span> _</p>
+        </div>
+    </div>
+
+    <section class="wecreate-section">
+        <h2>🛠️ Powered by WeCreate Services</h2>
+        <p>This platform was engineered by <strong>Mark Fajardo</strong> (<strong>@kramfaire</strong>, <strong>@fran</strong>), to demonstrate high-performance web architecture applied to gaming communities.</p>
+        
+        <div class="tech-stack">
+            <span class="tech-badge">PHP 8.3</span>
+            <span class="tech-badge">Symfony</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">API Platform</span>
+            <span class="tech-badge">AssetMapper</span>
+        </div>
+        
+        <p style="margin-top: 1.5rem; font-size: 0.85rem;">
+            Interested in high-end web solutions? 
+            <a href="https://www.wecreate-services.com/" target="_blank" class="wecreate-link">Visit WeCreate Services</a>
+        </p>
+    </section>
+</main>
+{% endblock %}

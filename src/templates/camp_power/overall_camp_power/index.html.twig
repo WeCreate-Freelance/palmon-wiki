@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}How Total Power Works - Palmon Survival Wiki{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .power-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ffffff !important;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 8px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .power-header h1 {
+            color: #ffffff !important;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .power-header p {
+            color: #bdc3c7 !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .power-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .power-category {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .power-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .power-category h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .power-val {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .power-category ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .think {
+            margin-top: auto;
+            background: #fff9e6;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-style: italic;
+            font-size: 0.85rem;
+            border-left: 3px solid #f1c40f;
+            color: #7f8c8d;
+        }
+
+        .power-profile {
+            background-color: #eef2f7;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px dashed var(--primary);
+        }
+
+        .analysis-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            vertical-align: middle;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.url %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    <div class="power-header">
+        <h1><span>🔢</span> Total Power Algorithm</h1>
+        <p>Overall Power = ∑ (Build + Tech + Palmon + Gear + Buffs)</p>
+    </div>
+
+    <div class="power-grid">
+        <div class="power-category">
+            <h2><span>🧱 Building</span> <span class="power-val">16.2M</span></h2>
+            <p><strong>Source:</strong> HQ and structures.</p>
+            <ul>
+                <li>Leveling up buildings</li>
+                <li>Unlocking high-tier tech</li>
+            </ul>
+            <div class="think">👉 The foundation of your progression.</div>
+        </div>
+
+        <div class="power-category">
+            <h2><span>🧪 Tech</span> <span class="power-val">4.36M</span></h2>
+            <p><strong>Source:</strong> Research Laboratory.</p>
+            <ul>
+                <li>Military (Atk/Def/HP)</li>
+                <li>Economy (Gather/Construction)</li>
+            </ul>
+            <div class="think">👉 Hidden multipliers for everything.</div>
+        </div>
+
+        <div class="power-category" style="border-top: 4px solid #e74c3c;">
+            <h2><span>🐾 Palmon</span> <span class="power-val">83M 🔥</span></h2>
+            <p><strong>Source:</strong> Main squad & bench.</p>
+            <ul>
+                <li>Leveling & Evolution</li>
+                <li>Skill upgrades</li>
+            </ul>
+            <div class="think">👉 Your actual army combat strength.</div>
+        </div>
+
+        <div class="power-category">
+            <h2><span>🤖 Armigo</span> <span class="power-val">16.8M</span></h2>
+            <p><strong>Source:</strong> Support companions.</p>
+            <div class="think">👉 Tactical support & secondary force.</div>
+        </div>
+
+        <div class="power-category">
+            <h2><span>🏰 Guild Tech</span> <span class="power-val">41K</span></h2>
+            <p><strong>Source:</strong> Alliance donations.</p>
+            <div class="think">👉 Scaling team-wide passive buffs.</div>
+        </div>
+
+        <div class="power-category" style="border-top: 4px solid #3498db;">
+            <h2><span>⚔️ Gear</span> <span class="power-val">10.8M</span></h2>
+            <p><strong>Source:</strong> Palmon Equipment.</p>
+            <ul>
+                <li>Refining & Enhancing</li>
+                <li>Set bonuses</li>
+            </ul>
+            <div class="think">👉 Direct combat stat amplifier.</div>
+        </div>
+
+        <div class="power-category">
+            <h2><span>💎 VIP</span> <span class="power-val">3M</span></h2>
+            <p><strong>Source:</strong> VIP level bonuses.</p>
+            <div class="think">👉 Quality of life & stat perks.</div>
+        </div>
+
+        <div class="power-category" style="opacity: 0.6;">
+            <h2><span>🎨 Others</span> <span class="power-val">0</span></h2>
+            <p>Skins, Achievements, and Bosses.</p>
+            <div class="think">👉 Potential future scaling.</div>
+        </div>
+    </div>
+
+    <div class="power-profile">
+        <h2>📊 Intelligence Report <span class="analysis-badge">STRATEGIC VIEW</span></h2>
+        <p>Your current distribution breakdown:</p>
+        <ul>
+            <li><strong>Combat Focus (Palmon + Gear):</strong> 74% — High offensive capability. ✅</li>
+            <li><strong>Structural Focus (Building):</strong> 13% — Stable foundation.</li>
+            <li><strong>Efficiency Focus (Tech):</strong> 3.5% — ⚠️ <strong>CRITICAL:</strong> Increase research!</li>
+        </ul>
+    </div>
+</main>
+{% endblock %}
