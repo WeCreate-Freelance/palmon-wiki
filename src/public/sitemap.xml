@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/camp-power</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/palmon-power</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/camp-power/camp-upgrade-requirements</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/camp-power/overall-camp-power</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/camp-power/best-way-to-increase-power-fast</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/palmon-power/simple-power-guide</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://palmon-wiki.wecreate-services.com/about</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
